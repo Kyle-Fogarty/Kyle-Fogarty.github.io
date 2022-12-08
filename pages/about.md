@@ -1,8 +1,8 @@
 ---
 layout: page
-title: About
+title: About me
 permalink: "/about/"
-image: assets/images/screenshot.png
+image: 
 ---
 
 This website is a demonstration to see **Affiliates Jekyll theme** in action. 
