@@ -3,7 +3,7 @@ email: ktf25@cam.ac.uk
 timezone: UTC
 baseurl: ""
 permalink: "/:title/"
-logo: 'assets/images/logo.pdf'
+logo: 'assets/images/logo.svg'
 favicon: 'assets/images/favicon.ico'
 author: Kyle
 paginate: 30
@@ -37,11 +37,11 @@ authors:
 
 # Social
 social:
-  instagram: https://www.instagram.com/bootstrapstarter/
-  facebook: https://www.facebook.com/bootstrapstartercom-346329609045284
-  twitter: https://twitter.com/bstartercom
-  linkedin: https://google.com
-
+  instagram: 
+  facebook: 
+  twitter: 
+  linkedin: https://www.linkedin.com/in/kylefogarty/
+  google_scholar: https://scholar.google.com/citations?user=yEwwq4EAAAAJ&hl=en
 # Plugins
 plugins: 
 - jekyll-paginate
