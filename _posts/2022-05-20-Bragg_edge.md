@@ -2,6 +2,8 @@
 layout: post
 title:  "Recovering the second moment of the strain distribution from neutron Bragg edge data"
 publish_author: Kyle Fogarty, Evelina Ametova, Genoveva Burca, Alexander M Korsunsky, Søren Schmidt, Philip J Withers, William RB Lionheart
+publish_venue: Applied Physics Letters (APL)
+publish_year: 2022
 categories: [Physics, Applied Mathematics, Inverse Problems]
 image: assets/images/imat.jpg
 featured: True

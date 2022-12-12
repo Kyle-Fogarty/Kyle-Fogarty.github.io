@@ -3,6 +3,8 @@ layout: post
 title:  "Towards Open Source Hardware Robotic Woodwind: an Internal Duct Flute Player"
 author: Kyle 
 publish_author: James Bennett, Bethan Moncur, Kyle Fogarty, Garry Clawson, Charles Fox
+publish_venue: International Computer Music Conference
+publish_year: 2022
 categories: [ Robotics, Open-Source ]
 image: assets/images/robot_recorder.jpg
 featured: True
