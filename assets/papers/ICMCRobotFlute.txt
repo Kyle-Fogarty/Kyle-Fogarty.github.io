@@ -1,0 +1,6 @@
+@article{fogarty2022recovering,
+  title={Recovering the second moment of the strain distribution from neutron Bragg edge data},
+  author={Fogarty, Kyle and Ametova, Evelina and Burca, Genoveva and Korsunsky, Alexander M and Schmidt, S{\o}ren and Withers, Philip J and Lionheart, William RB},
+  journal={Applied Physics Letters},
+  year={2022},
+}

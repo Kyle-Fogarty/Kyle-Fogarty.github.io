@@ -1,0 +1,7 @@
+@techreport{FogartyMasterThesis,
+   author = {Fogarty, Kyle},
+   title = {Surface Reconstruction of Point Clouds: Towards moving least squares using a learned MLP basis},
+   year = {2022},
+   institution = {University of Lincoln},
+}
+ 

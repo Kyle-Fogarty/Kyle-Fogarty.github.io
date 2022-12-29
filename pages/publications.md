@@ -5,7 +5,8 @@ permalink: "/publications/"
 usemathjax: true
 ---
 
-<section class="row">
+<h4>Publications</h4>
+<section class="column">
 {% assign i = 0 %}  
   {% for post in site.posts %}
       {% if post.featured == true %}

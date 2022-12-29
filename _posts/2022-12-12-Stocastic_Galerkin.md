@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Stochastic Galerkin Approximations"
+title:  "Test"
 publish_author: Kyle Fogarty
 categories: []
 image: assets/images/GRF.png
 featured: False
-blog_topic: Uncertainty Quantification
+blog_topic: Test
 usemathjax: true
 ---
 
