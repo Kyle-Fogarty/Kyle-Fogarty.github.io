@@ -13,7 +13,7 @@ We present the first open source hardware (OSH) design and build of an automated
 
 <table style="width:80%">
   <tr>
-    <th><a href="{{site.baseurl}}/assets/papers/ICMCRobotFlute.pdf class="btn btn-dark text-white px-5 btn-lg">PDF</a></th>
+    <th><a href="{{site.baseurl}}/assets/papers/ICMCRobotFlute.pdf"s class="btn btn-dark text-white px-5 btn-lg">PDF</a></th>
     <th><a href="{{site.baseurl}}/assets/papers/ICMCRobotFlute .txt" class="btn btn-dark text-white px-5 btn-lg">BiBTex</a></th> 
   </tr>
 </table>
