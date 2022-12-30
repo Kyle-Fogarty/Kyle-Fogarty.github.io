@@ -4,7 +4,7 @@ title: Publications
 permalink: "/publications/"
 usemathjax: true
 ---
-<h2 style="text-align: center;" >🚧 Site Currently Under Construction 🚧 <br> ... Please visit again soon ...</h2>
+<h2 style="text-align: center;" >🚧 This Area Is Currently Under Construction 🚧 <br> ... Please visit again soon ...</h2>
 
 <!-- <section #class="row"> -->
 {% assign i = 0 %}  
