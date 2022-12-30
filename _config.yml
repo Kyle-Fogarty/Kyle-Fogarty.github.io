@@ -42,6 +42,7 @@ social:
   twitter: 
   linkedin: https://www.linkedin.com/in/kylefogarty/
   google_scholar: https://scholar.google.com/citations?user=yEwwq4EAAAAJ&hl=en
+  cambridge: https://www.cst.cam.ac.uk/people/ktf25
 # Plugins
 plugins: 
 - jekyll-paginate
