@@ -9,8 +9,8 @@ blog_topic: Outreach & Dissemination
 usemathjax: true
 ---
 
-In March 2022 I was invited to give two semninars at the University of Warwick, as part of the Hetsys CDTs computational toolkit seminar series. Through a continued colaberation with the group, I have launched a webpage to host all of the seminars given and the associated resources. 
+In March 2022, I was invited to give two semninars at the University of Warwick, as part of the Hetsys CDTs computational toolkit seminar series. Through a continued collaboration with the group in Warwick, I have launched a webpage to host all of the seminars given and the associated seminar resources. 
 
-The talks are aimed at junior researchers starting out in a technical field and cover topics ranging from Git and version control, through to FEM and uncertainty quantification.
+The talks are aimed at junior researchers starting out in a technical field and cover topics ranging from Git and version control, through to FEM and Uncertainty Quantification.
 
 The website can be found at <a href ="https://computationaltoolkit.github.io"><u>https://computationaltoolkit.github.io</u></a>.
