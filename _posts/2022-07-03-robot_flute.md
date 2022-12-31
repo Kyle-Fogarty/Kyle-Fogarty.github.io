@@ -18,4 +18,8 @@ We present the first open source hardware (OSH) design and build of an automated
   </tr>
 </table>
 
+##Conference Video
+<br>
+<center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/91aKZUQ2KXA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
