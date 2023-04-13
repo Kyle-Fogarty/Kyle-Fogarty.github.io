@@ -28,30 +28,15 @@ background: '/img/bg-index.jpg'
 {% endif %}
 
 <!-- Featured
-================================================== -->
+================================================== 
 <h3 class="font-weight-bold mb-4 serif-font">Recent News 🗞️:</h3>
-<!-- &nbsp➙&nbsp   I am looking for students to work with me on a project over summer 2023 (see contact page for more details). [Jan 2023]<br> -->
+ &nbsp➙&nbsp   I am looking for students to work with me on a project over summer 2023 (see contact page for more details). [Jan 2023]<br>
 &nbsp➙&nbsp   I have launched the <a href = "https://computationaltoolkit.github.io"><em><u>Computational Toolkit</u></em></a> webpage, as part of my work with the University of Warwick. [Nov 2022]<br>
 &nbsp➙&nbsp   I have started my PhD with Dr Cengiz Öztireli at the University of Cambridge. [Oct 2022]<br>
 &nbsp➙&nbsp   I submitted my MSc thesis on point-set reconstruction at the University of Lincoln. [Sep 2022]
 <br>
-<br>
-<h3 class="font-weight-bold mb-4 serif-font">Recent Publications:</h3>
-<br>
-<section class="row">
-{% assign i = 0 %}  
-  {% for post in site.posts %}
-      {% if post.featured == true %}
-        {% if i < 3  %}
-            <div class="col-md-4 mb-5">
-            {% include postbox.html %}
-            </div>
-            {% assign i = i | plus:1 %}
-        {% endif %}
-      {% endif %}
-  {% endfor %}
-  </div>
-</section>
+<br>-->
+
 
 
 {% for thing in things %}
@@ -60,18 +45,29 @@ background: '/img/bg-index.jpg'
 
 <!-- Posts List with Sidebar (except featured)
 ================================================== -->
-<h3 class="font-weight-bold mb-4 serif-font">Recent Blog Posts:</h3>
+<h3 class="font-weight-bold mb-4 serif-font"><a href = '/publications/'>Recent Publications:</a></h3>
 <br>
 <section class="row">
   <div class="col-sm-8">
     <div class="row">
-      {% for post in paginator.posts %}
-      {% unless post.featured == true %}
-      <div class="col-md-6 mb-5">
-        {% include postbox.html %}
-      </div>
+
+      {% unless post.featured == false %}
+
+      {% assign i = 0 %}  
+      {% for post in site.posts %}
+      {% if post.featured == true %}
+        {% if i < 2  %}
+        <div class="col-md-6 mb-5">
+          {% include postbox.html %}
+        </div>
+            {% assign i = i | plus:1 %}
+        {% endif %}
+      {% endif %}
+  {% endfor %}
+
+
       {% endunless %}
-      {% endfor %}
+    
     </div>
     
     <!-- Pagination -->
@@ -83,5 +79,22 @@ background: '/img/bg-index.jpg'
   </div>
   <div class="col-sm-4">
     {% include sidebar.html %}
+  </div>
+</section>
+
+<h3 class="font-weight-bold mb-4 serif-font">Recent Blog Posts:</h3>
+<br>
+<section class="row">
+{% assign i = 0 %}  
+  {% for post in site.posts %}
+      {% if post.featured == false %}
+        {% if i < 3  %}
+            <div class="col-md-4 mb-5">
+            {% include postbox.html %}
+            </div>
+            {% assign i = i | plus:1 %}
+        {% endif %}
+      {% endif %}
+  {% endfor %}
   </div>
 </section>
