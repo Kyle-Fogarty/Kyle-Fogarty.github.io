@@ -13,6 +13,9 @@ topmenu:
 # - title: Blog
 #   url: "blog/"
 
+# - title: Projects
+#   url: "projects/"
+
 - title: Contact
   url: "contact/"
 
