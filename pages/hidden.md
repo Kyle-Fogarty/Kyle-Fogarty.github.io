@@ -11,3 +11,9 @@ usemathjax: true
 <model-viewer alt="" src="prior2train.glb" shadow-intensity="1" orientation="90deg 0 0" camera-controls touch-action="pan-z" style="width:100%;height:500px"></model-viewer>
 <p>Spot Model (Local Kernel) : 100 epochs (regression)</p>
 <model-viewer alt="" src="post2train.glb" shadow-intensity="1" orientation="90deg 0 0" camera-controls touch-action="pan-z" style="width:100%;height:500px"></model-viewer>
+
+
+
+
+<p>Stanford Bunny </p>
+<model-viewer alt="" src="https://www.cl.cam.ac.uk/~ktf25/Point_Cloud_Reconstruction/bunny_2500_postrun_5.glb" shadow-intensity="1" orientation="90deg 0 0" camera-controls touch-action="pan-z" style="width:100%;height:500px"></model-viewer>
