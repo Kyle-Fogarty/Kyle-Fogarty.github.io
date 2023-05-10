@@ -9,6 +9,11 @@ usemathjax: true
 <p>Spot Model (Local Kernel) : Init</p>
 <!-- Use it like any other HTML element -->
 <model-viewer alt="" src="localweighted.glb" shadow-intensity="1" orientation="90deg 0 0" camera-controls touch-action="pan-z" style="width:100%;height:500px"></model-viewer>
+
+
+<p>Max Planck Model (Local Kernel) - 10,000 points : Init</p>
+<!-- Use it like any other HTML element -->
+<model-viewer alt="" src="max_plank.glb" shadow-intensity="1" orientation="90deg 0 0" camera-controls touch-action="pan-z" style="width:100%;height:500px"></model-viewer>
 <!-- <p>Spot Model (Local Kernel) : 100 epochs (regression)</p>
 <model-viewer alt="" src="post2train.glb" shadow-intensity="1" orientation="90deg 0 0" camera-controls touch-action="pan-z" style="width:100%;height:500px"></model-viewer>
 
