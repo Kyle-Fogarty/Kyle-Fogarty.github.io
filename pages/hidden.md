@@ -9,7 +9,7 @@ usemathjax: true
 
 
 
-<model-viewer alt="" src="dog_model.glb" shadow-intensity="1" orientation="90deg 0 0" camera-controls touch-action="pan-z" style="width:100%;height:500px"></model-viewer>
+<model-viewer alt="" src="dog_model.glb" shadow-intensity="1" orientation="0 0 0" camera-controls touch-action="pan-z" style="width:100%;height:500px"></model-viewer>
 
 <p>Spot Model (Local Kernel) : Init</p>
 <!-- Use it like any other HTML element -->
