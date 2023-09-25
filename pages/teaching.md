@@ -40,7 +40,7 @@ The question sheets are avaible via the following button:
   var target = document.currentScript;
   window.addEventListener('load', function() {
     calendar.schedulingButton.load({
-      url: 'ahttps://calendar.google.com/calendar/appointments/schedules/AcZssZ0KU-_yQ2lGyNu7GVheJEgmetyDor3va3rsgsBvrglHA8zlQrBy7V6g2snJwEtRW7UpBkriSB8f?gv=true',
+      url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ0KU-_yQ2lGyNu7GVheJEgmetyDor3va3rsgsBvrglHA8zlQrBy7V6g2snJwEtRW7UpBkriSB8f?gv=true',
       color: '#E4C441',
       label: 'Book a supervision',
       target,
@@ -54,7 +54,7 @@ The question sheets are avaible via the following button:
 📝 <b>Uploading Work</b> : Please submit your work a minimum of <b>24 hours in advance</b> of the supervision by uploading a PDF to Dropbox using the link below. Please make sure the PDF title <b>includes your group ID</b> assigned at the start of term.
 
 <center>
-<a href="ahttps://www.dropbox.com/request/KACnyH0FSfpbstXRpj9m" class="btn btn-dark text-white px-4 ">Upload Work</a>
+<a href="" class="btn btn-dark text-white px-4 ">Upload Work</a>
 </center> 
 
 <hr> 
