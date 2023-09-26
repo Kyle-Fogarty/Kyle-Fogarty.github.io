@@ -21,9 +21,19 @@ In this first supervision we will look at the following topics:
   <li>Animation (Questions 14 - 18)</li>
 </ul>
 
-The question sheets are avaible via the following button: 
+❓ <b>Problem Sheets</b> : The problem sheets are avaible via the following button: 
 <center>
 <a href="https://drive.google.com/drive/folders/1aCfRTl6Y56XNdWe06KKKF6Xrs-jzIwn_?usp=share_link" class="btn btn-dark text-white px-4 ">Access Resources</a>
+</center> 
+
+
+
+
+
+📝 <b>Uploading Work</b> : Please submit your work a minimum of <b>24 hours in advance</b> of the supervision by uploading a PDF to Dropbox using the link below. Please make sure the PDF title <b>includes your group ID</b> assigned at the start of term.
+
+<center>
+<a href="https://www.dropbox.com/request/bcCKHv4cHGXoQ3GDdN1I" class="btn btn-dark text-white px-4 ">Upload Work</a>
 </center> 
 
 
@@ -49,14 +59,6 @@ The question sheets are avaible via the following button:
 })();
 </script>
 </center> 
-
-
-📝 <b>Uploading Work</b> : Please submit your work a minimum of <b>24 hours in advance</b> of the supervision by uploading a PDF to Dropbox using the link below. Please make sure the PDF title <b>includes your group ID</b> assigned at the start of term.
-
-<center>
-<a href="https://www.dropbox.com/request/bcCKHv4cHGXoQ3GDdN1I" class="btn btn-dark text-white px-4 ">Upload Work</a>
-</center> 
-
 <hr> 
 
 <h3>1B Further Graphics : Supervision 2</h3>
