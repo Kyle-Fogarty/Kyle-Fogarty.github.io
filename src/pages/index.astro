@@ -1,0 +1,636 @@
+---
+import Base from '../layouts/Base.astro';
+import PublicationCard from '../components/PublicationCard.astro';
+import SplatHero from '../components/SplatHero.astro';
+import { publications } from '../data/publications';
+import { experience } from '../data/experience';
+import { education } from '../data/education';
+import { news } from '../data/news';
+import { researchFocus } from '../data/research-focus';
+
+const years = [...new Set(publications.map((p) => p.year))].sort((a, b) => b - a);
+---
+
+<Base
+  title="Kyle Fogarty — PhD Student, University of Cambridge"
+  description="Kyle Fogarty is a PhD student in Computer Science at the University of Cambridge, working across 3D computer graphics, computer vision, and machine learning."
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="blob" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1 class="hero-title">Kyle Fogarty</h1>
+        <p class="hero-sub">
+          I'm a PhD student in Computer Science at the University of Cambridge, working across 3D
+          computer graphics, computer vision, and machine learning.
+        </p>
+        <a class="hero-now" href="https://ai.meta.com/">
+          <img class="meta-mark" src="meta-logo.webp" alt="Meta" width="24" height="24" />
+          <span>Research Scientist Intern · <strong>Meta</strong> 3D GenAI</span>
+        </a>
+        <div class="hero-profiles">
+          <a href="https://scholar.google.com/citations?user=yEwwq4EAAAAJ">
+            <svg class="profile-icon" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path
+                d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10.5c2.209 0 4 1.791 4 4v7h-8v-7c0-2.209 1.791-4 4-4z"
+              ></path>
+            </svg>
+            Google Scholar
+          </a>
+          <a href="https://github.com/kyle-fogarty">
+            <svg class="profile-icon" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+              ></path>
+            </svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/kylefogarty/">
+            <svg class="profile-icon" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.062 2.062 0 0 1 2.063-2.063 2.062 2.062 0 0 1 2.063 2.063 2.062 2.062 0 0 1-2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+              ></path>
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+      <SplatHero />
+    </div>
+    <a class="scroll-cue" id="scroll-cue" href="#about" aria-label="Scroll to read more">
+      <svg class="scroll-cue-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14"></path>
+        <path d="m6 13 6 6 6-6"></path>
+      </svg>
+    </a>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="container about-grid">
+      <div>
+        <p class="section-label">About</p>
+        <h2 class="section-title">Research</h2>
+        <p class="about-text">
+          I work on computational methods that recover, represent, and generate the 3D world, 
+          supervised by <a href="https://www.cst.cam.ac.uk/people/aco41">Prof. Cengiz Öztireli</a>
+          in the Department of Computer Science &amp; Technology at Cambridge. My research spans
+          neural surface reconstruction, point cloud generation, and 3D generative models, working
+          toward high-fidelity digital models of the visual world. 
+          <br> 
+          <br>
+          Alongside my PhD, I bring this research into practice through industry, building
+          production systems for 3D reconstruction and generation.
+        </p>
+      </div>
+      <div class="about-focus">
+        <p class="section-label">Focus</p>
+        <ul class="focus-list">
+          {
+            researchFocus.map((item) => (
+              <li class={`focus-item focus-item--${item.accent}`}>
+                <h3 class="focus-title">{item.title}</h3>
+                <p class="focus-text">{item.description}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section" id="experience">
+    <div class="container">
+      <p class="section-label">Experience</p>
+      <h2 class="section-title">Industry &amp; applied research</h2>
+      <div class="cv-list">
+        {
+          experience.map((item) => (
+            <div class="cv-entry">
+              <div class="cv-period">{item.period}</div>
+              <article class="card cv-card">
+                <div class="cv-head">
+                  <h3 class="cv-role">
+                    {item.role}
+                    {item.current && <span class="cv-current">Current</span>}
+                  </h3>
+                  <p class="cv-org">
+                    {item.orgUrl ? <a href={item.orgUrl}>{item.org}</a> : item.org}
+                    {item.location && <span class="cv-loc"> · {item.location}</span>}
+                  </p>
+                </div>
+                <ul class="cv-points">
+                  {item.points.map((point) => (
+                    <li>{point}</li>
+                  ))}
+                </ul>
+              </article>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications -->
+  <section class="section" id="publications">
+    <div class="container">
+      <p class="section-label">Publications</p>
+      <h2 class="section-title">Papers &amp; preprints</h2>
+      {
+        years.map((year) => (
+          <div class="pub-year-group">
+            <h3 class="pub-year">{year}</h3>
+            <div class="pub-list">
+              {publications
+                .filter((p) => p.year === year)
+                .map((pub) => (
+                  <PublicationCard pub={pub} />
+                ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section" id="education">
+    <div class="container">
+      <p class="section-label">Education</p>
+      <h2 class="section-title">Education</h2>
+      <div class="cv-list">
+        {
+          education.map((item) => (
+            <div class="cv-entry">
+              <div class="cv-period">{item.period}</div>
+              <article class="card cv-card">
+                <div class="cv-head">
+                  <h3 class="cv-role">
+                    {item.degree}
+                    {item.distinction && <span class="cv-distinction">{item.distinction}</span>}
+                  </h3>
+                  <p class="cv-org">
+                    {item.orgUrl ? <a href={item.orgUrl}>{item.org}</a> : item.org}
+                  </p>
+                </div>
+                {item.note && <p class="cv-note">{item.note}</p>}
+              </article>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- News -->
+  <section class="section section--compact" id="news">
+    <div class="container">
+      <p class="section-label">News</p>
+      <h2 class="section-title">Recent updates</h2>
+      <ul class="news-list">
+        {
+          news.map((item) => (
+            <li class="news-item">
+              <span class="news-date">{item.date}</span>
+              <span class="news-text">
+                {item.url ? <a href={item.url}>{item.text}</a> : item.text}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    position: relative;
+    padding-block: clamp(5rem, 12vw, 8.5rem) clamp(4.5rem, 10vw, 6rem);
+    isolation: isolate;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: clamp(1rem, 3vw, 1.75rem);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    color: var(--text-faint);
+    text-decoration: none;
+    transition: color 140ms ease;
+  }
+
+  .scroll-cue[hidden] {
+    display: none;
+  }
+
+  .scroll-cue:hover {
+    color: var(--text-muted);
+  }
+
+  .scroll-cue-icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    animation: scroll-bounce 2.2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.45;
+    }
+    50% {
+      transform: translateY(5px);
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-cue-icon {
+      animation: none;
+      opacity: 0.7;
+    }
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+
+  @media (max-width: 760px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .hero-now {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.4rem;
+    padding: 0.34rem 0.9rem 0.34rem 0.55rem;
+    border-radius: 999px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: transform 140ms ease, border-color 140ms ease;
+  }
+
+  .hero-now:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--border) 45%, var(--text-faint));
+  }
+
+  .hero-now strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .meta-mark {
+    width: 1.35rem;
+    height: 1.35rem;
+    flex-shrink: 0;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    font-weight: 560;
+    letter-spacing: -0.015em;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-sub {
+    font-size: clamp(1.0625rem, 2vw, 1.25rem);
+    color: var(--text-muted);
+    max-width: 38rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-profiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+
+  .hero-profiles a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .profile-icon {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    opacity: 0.9;
+  }
+
+  .hero-profiles a:hover {
+    color: var(--text);
+    text-decoration: underline;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+    gap: 3rem;
+  }
+
+  .about-text {
+    max-width: 44rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .about-focus {
+    padding-top: 0.4rem;
+  }
+
+  .focus-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .focus-item {
+    padding-left: 0.85rem;
+    border-left: 2px solid var(--focus-accent, var(--pastel-blue));
+  }
+
+  .focus-item--blue {
+    --focus-accent: var(--pastel-blue);
+  }
+
+  .focus-item--green {
+    --focus-accent: var(--pastel-green);
+  }
+
+  .focus-item--lilac {
+    --focus-accent: var(--pastel-lilac);
+  }
+
+  .focus-title {
+    font-size: 1rem;
+    font-weight: 560;
+    margin-bottom: 0.2rem;
+  }
+
+  .focus-text {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 760px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  .pub-year-group {
+    display: grid;
+    grid-template-columns: 5rem minmax(0, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .pub-year {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-faint);
+    padding-top: 1.4rem;
+  }
+
+  .pub-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  @media (max-width: 640px) {
+    .pub-year-group {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+    }
+    .pub-year {
+      padding-top: 0;
+    }
+  }
+
+  /* Experience & Education entries */
+  .cv-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cv-entry {
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .cv-period {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-faint);
+    padding-top: 1.55rem;
+  }
+
+  .cv-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .cv-head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .cv-role {
+    font-size: 1.125rem;
+    line-height: 1.3;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .cv-org {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+  }
+
+  .cv-loc {
+    color: var(--text-faint);
+  }
+
+  .cv-current,
+  .cv-distinction {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text);
+    border-radius: 999px;
+    padding: 0.06rem 0.5rem;
+  }
+
+  .cv-current {
+    background: color-mix(in srgb, var(--pastel-green) var(--chip-mix), var(--bg-card));
+    border: 1px solid color-mix(in srgb, var(--pastel-green) var(--chip-border-mix), var(--bg-card));
+  }
+
+  .cv-distinction {
+    background: color-mix(in srgb, var(--pastel-blue) var(--chip-mix), var(--bg-card));
+    border: 1px solid color-mix(in srgb, var(--pastel-blue) var(--chip-border-mix), var(--bg-card));
+  }
+
+  :root[data-theme='dark'] .cv-current {
+    color: color-mix(in srgb, var(--pastel-green) 45%, var(--text));
+  }
+
+  :root[data-theme='dark'] .cv-distinction {
+    color: color-mix(in srgb, var(--pastel-blue) 45%, var(--text));
+  }
+
+  .cv-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  .cv-points li {
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .cv-points li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--text-faint);
+  }
+
+  .cv-note {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 640px) {
+    .cv-entry {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+    .cv-period {
+      padding-top: 0;
+    }
+  }
+
+  .news-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    max-width: 44rem;
+  }
+
+  .section--compact {
+    padding-block: 3rem 0.5rem;
+  }
+
+  .section--compact .section-title {
+    margin-bottom: 1rem;
+  }
+
+  .news-item {
+    display: grid;
+    grid-template-columns: 5.25rem minmax(0, 1fr);
+    gap: 0.65rem;
+    padding-block: 0.4rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9375rem;
+    line-height: 1.45;
+  }
+
+  .news-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .news-date {
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  .news-text {
+    color: var(--text-muted);
+  }
+
+  .news-text a {
+    text-decoration-color: color-mix(in srgb, var(--text) 25%, transparent);
+  }
+
+  @media (max-width: 640px) {
+    .news-item {
+      grid-template-columns: 1fr;
+      gap: 0.1rem;
+      padding-block: 0.5rem;
+    }
+  }
+</style>
+
+<script>
+  const cue = document.getElementById('scroll-cue');
+  if (cue) {
+    const fadeDistance = 180;
+    let ticking = false;
+
+    function updateScrollCue() {
+      const opacity = Math.max(0, 1 - window.scrollY / fadeDistance);
+      cue.style.opacity = String(opacity);
+      cue.style.pointerEvents = opacity > 0.05 ? 'auto' : 'none';
+      cue.toggleAttribute('hidden', opacity === 0);
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateScrollCue);
+      }
+    }
+
+    updateScrollCue();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+</script>

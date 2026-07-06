@@ -1,0 +1,196 @@
+<div class="splat-stage">
+  <canvas class="splat-canvas" aria-label="3D portrait of Kyle Fogarty"></canvas>
+  <p class="splat-hint" aria-hidden="true">loading 3D…</p>
+  <span class="splat-me" aria-hidden="true">Me</span>
+  <svg
+    class="splat-me-arrow"
+    aria-hidden="true"
+    viewBox="0 0 64 72"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2.4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M56 6 C 42 20, 32 34, 17 53" />
+    <path d="M17 53 L 30 51" />
+    <path d="M17 53 L 20 40" />
+  </svg>
+</div>
+
+<script>
+  const stage = document.querySelector('.splat-stage') as HTMLElement;
+  const canvas = stage?.querySelector('.splat-canvas') as HTMLCanvasElement;
+  const hint = stage?.querySelector('.splat-hint') as HTMLElement;
+
+  function webgl2Available(): boolean {
+    try {
+      return !!document.createElement('canvas').getContext('webgl2');
+    } catch {
+      return false;
+    }
+  }
+
+  async function init() {
+    if (!stage || !canvas || !webgl2Available()) return;
+
+    const SPLAT = await import('gsplat');
+
+    const scene = new SPLAT.Scene();
+    const camera = new SPLAT.Camera();
+    const renderer = new SPLAT.WebGLRenderer(canvas);
+    renderer.backgroundColor = new SPLAT.Color32(0, 0, 0, 0);
+
+    try {
+      await SPLAT.Loader.LoadAsync(`${import.meta.env.BASE_URL}kyle.splat`, scene, (p: number) => {
+        if (hint) hint.textContent = `loading 3D… ${Math.round(p * 100)}%`;
+      });
+    } catch {
+      if (hint) hint.remove();
+      return;
+    }
+
+    // Scene is in the source camera's frame (y down, z forward); the subject
+    // is a cutout centred around z ≈ 0.8, viewed from a fixed radius.
+    const target = new SPLAT.Vector3(0, 0.02, 0.8);
+    const radius = 0.95;
+    const MAX_YAW = 0.2; // rad, subject appears to glance toward the cursor
+    const MAX_PITCH = 0.12;
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let yaw = 0;
+    let pitch = 0;
+    let yawTarget = 0;
+    let pitchTarget = 0;
+
+    if (!reducedMotion) {
+      window.addEventListener(
+        'pointermove',
+        (e) => {
+          const r = stage.getBoundingClientRect();
+          const dx = (e.clientX - (r.left + r.width / 2)) / (window.innerWidth / 2);
+          const dy = (e.clientY - (r.top + r.height / 2)) / (window.innerHeight / 2);
+          // camera moves opposite the cursor so the face turns toward it
+          yawTarget = -Math.max(-1, Math.min(1, dx)) * MAX_YAW;
+          pitchTarget = -Math.max(-1, Math.min(1, dy)) * MAX_PITCH;
+        },
+        { passive: true }
+      );
+    }
+
+    const placeCamera = () => {
+      const px = target.x + radius * Math.sin(yaw) * Math.cos(pitch);
+      const py = target.y + radius * Math.sin(pitch);
+      const pz = target.z - radius * Math.cos(yaw) * Math.cos(pitch);
+      camera.position = new SPLAT.Vector3(px, py, pz);
+      const dir = new SPLAT.Vector3(
+        target.x - px,
+        target.y - py,
+        target.z - pz
+      ).normalize();
+      camera.rotation = SPLAT.Quaternion.LookRotation(dir);
+    };
+
+    const resize = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      renderer.setSize(stage.clientWidth * dpr, stage.clientHeight * dpr);
+    };
+    resize();
+    new ResizeObserver(resize).observe(stage);
+
+    const frame = () => {
+      yaw += (yawTarget - yaw) * 0.07;
+      pitch += (pitchTarget - pitch) * 0.07;
+      placeCamera();
+      renderer.render(scene, camera);
+      requestAnimationFrame(frame);
+    };
+    placeCamera();
+    requestAnimationFrame(frame);
+
+    stage.classList.add('is-3d');
+    if (hint) hint.remove();
+    (window as any).__splat = { SPLAT, scene, camera, renderer };
+  }
+
+  if (document.readyState === 'complete') {
+    init();
+  } else {
+    window.addEventListener('load', () => init(), { once: true });
+  }
+</script>
+
+<style>
+  .splat-stage {
+    position: relative;
+    width: clamp(275px, 37.5vw, 500px);
+    aspect-ratio: 1;
+    transform: translateY(-1.5rem);
+  }
+
+  .splat-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.25rem;
+    opacity: 0;
+    transition: opacity 400ms ease;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to bottom, black 58%, transparent 80%);
+    mask-image: linear-gradient(to bottom, black 58%, transparent 80%);
+  }
+
+  .splat-hint {
+    position: absolute;
+    left: 50%;
+    bottom: -2.1rem;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--text-faint);
+    white-space: nowrap;
+  }
+
+  .is-3d .splat-canvas {
+    opacity: 1;
+  }
+
+  .splat-me {
+    position: absolute;
+    top: 4.6rem;
+    right: 0.25rem;
+    font-family: var(--font-hand);
+    font-weight: 700;
+    font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+    line-height: 1;
+    color: var(--text);
+    transform: rotate(-9deg);
+    z-index: 3;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .splat-me-arrow {
+    position: absolute;
+    top: 6.95rem;
+    right: 2.1rem;
+    width: clamp(2.6rem, 6vw, 3.6rem);
+    height: auto;
+    color: var(--text);
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  @media (max-width: 760px) {
+    .splat-stage {
+      order: -1;
+      width: 260px;
+    }
+    .splat-hint {
+      left: 0;
+      transform: none;
+    }
+  }
+</style>

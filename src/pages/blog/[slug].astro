@@ -1,0 +1,112 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Base
+  title={`${post.data.title} — Kyle Fogarty`}
+  description={post.data.description ?? post.data.title}
+>
+  <article class="section">
+    <div class="container post">
+      <p class="post-date">{formatDate(post.data.date)}</p>
+      <h1 class="post-title">{post.data.title}</h1>
+      <div class="prose">
+        <Content />
+      </div>
+      <p class="post-back"><a href="/blog/">← All posts</a></p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .post {
+    max-width: var(--content-width);
+  }
+
+  .post-date {
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-title {
+    font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+    margin-bottom: 2rem;
+  }
+
+  .prose :global(h2) {
+    font-size: 1.4rem;
+    margin: 2rem 0 0.75rem;
+  }
+
+  .prose :global(h3) {
+    font-size: 1.15rem;
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  .prose :global(p) {
+    margin-bottom: 1rem;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    margin: 0 0 1rem 1.25rem;
+  }
+
+  .prose :global(li) {
+    margin-bottom: 0.35rem;
+  }
+
+  .prose :global(pre) {
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+    overflow-x: auto;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose :global(code) {
+    font-size: 0.9em;
+  }
+
+  .prose :global(blockquote) {
+    border-left: 3px solid var(--border);
+    padding-left: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .post-back {
+    margin-top: 3rem;
+    font-size: 0.9375rem;
+  }
+
+  .post-back a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .post-back a:hover {
+    color: var(--text);
+    text-decoration: underline;
+  }
+</style>

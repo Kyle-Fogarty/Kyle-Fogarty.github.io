@@ -1,0 +1,227 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/source-serif-4';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '@fontsource-variable/caveat';
+import '../styles/global.css';
+import ThemeToggle from '../components/ThemeToggle.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const home = import.meta.env.BASE_URL;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href={`${home}favicon-32.png`} type="image/png" sizes="32x32" />
+    <link rel="icon" href={`${home}favicon.png`} type="image/png" sizes="256x256" />
+    <link rel="apple-touch-icon" href={`${home}favicon.png`} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <script is:inline>
+      const stored = localStorage.getItem('theme');
+      const theme =
+        stored ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.dataset.theme = theme;
+    </script>
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Kyle Fogarty',
+        url: 'https://kyle-fogarty.github.io',
+        jobTitle: 'PhD Student in Computer Science',
+        affiliation: {
+          '@type': 'Organization',
+          name: 'University of Cambridge',
+        },
+        sameAs: [
+          'https://scholar.google.com/citations?user=yEwwq4EAAAAJ',
+          'https://www.linkedin.com/in/kylefogarty/',
+          'https://github.com/kyle-fogarty',
+        ],
+      })}
+    />
+  </head>
+  <body>
+    <header class="site-nav">
+      <div class="container nav-inner">
+        <a class="brand" href={`${home}#top`}>
+          <img class="brand-logo" src={`${home}logo.png`} alt="Kyle Fogarty" width="285" height="120" />
+        </a>
+        <nav class="nav-links" aria-label="Main">
+          <a href={`${home}#about`}>About</a>
+          <a href={`${home}#experience`}>Experience</a>
+          <a href={`${home}#publications`}>Publications</a>
+          <a href={`${home}#education`}>Education</a>
+          <a href={`${home}#contact`}>Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <ThemeToggle />
+          <a class="btn btn-primary nav-cv" href={`${home}cv.pdf`}>CV</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <slot />
+    </main>
+
+    <footer class="site-footer" id="contact">
+      <div class="container footer-inner">
+        <div>
+          <h2 class="footer-title">Get in touch</h2>
+          <p class="footer-email">
+            <a href="mailto:ktf25@cam.ac.uk">ktf25@cam.ac.uk</a>
+          </p>
+          <p class="footer-affiliation">
+            Department of Computer Science &amp; Technology<br />
+            University of Cambridge
+          </p>
+        </div>
+        <nav class="footer-links" aria-label="Profiles">
+          <a href="https://scholar.google.com/citations?user=yEwwq4EAAAAJ">Google Scholar</a>
+          <a href="https://github.com/kyle-fogarty">GitHub</a>
+          <a href="https://www.linkedin.com/in/kylefogarty/">LinkedIn</a>
+        </nav>
+      </div>
+      <div class="container footer-meta">
+        <p>© {new Date().getFullYear()} Kyle Fogarty</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg-nav);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    height: 4rem;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .brand-logo {
+    height: 2.6rem;
+    width: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.4rem;
+    margin-left: auto;
+  }
+
+  .nav-links a {
+    font-family: var(--font-sans);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    transition: color 140ms ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--text);
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .nav-cv {
+    padding: 0.42rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 720px) {
+    .nav-links {
+      display: none;
+    }
+    .nav-actions {
+      margin-left: auto;
+    }
+  }
+
+  .site-footer {
+    margin-top: 5rem;
+    border-top: 1px solid var(--border);
+    background: var(--bg-soft);
+    padding-block: 3.5rem 2rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .footer-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-email {
+    font-size: 1.0625rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-affiliation {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+
+  .footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    color: var(--text);
+    text-decoration: underline;
+  }
+
+  .footer-meta {
+    margin-top: 2.5rem;
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+  }
+</style>
